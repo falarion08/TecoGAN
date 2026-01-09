@@ -9,6 +9,8 @@ Disable Logs for now '''
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import tensorflow as tf
 from tensorflow.python.util import deprecation
+tf.disable_v2_behavior()
+
 deprecation._PRINT_DEPRECATION_WARNINGS = False
 import random as rn
 
