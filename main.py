@@ -8,8 +8,9 @@ import os, math, time, collections, numpy as np
 Disable Logs for now '''
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import tensorflow.compat.v1 as tf
-from tensorflow.python.util import deprecation
 tf.disable_v2_behavior()
+
+from tensorflow.python.util import deprecation
 
 deprecation._PRINT_DEPRECATION_WARNINGS = False
 import random as rn
@@ -21,7 +22,7 @@ rn.seed(12345)
 tf.set_random_seed(1234)
 
 
-import tensorflow.contrib.slim as slim
+import tf_slim as slim
 import sys, shutil, subprocess
 
 from lib.ops import *

@@ -1,5 +1,7 @@
-import tensorflow as tf
-import tensorflow.contrib.slim as slim
+import tensorflow as import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+
+import tf_slim as slim
 import pdb
 import keras
 
