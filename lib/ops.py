@@ -39,10 +39,10 @@ def conv2_tran(batch_input, kernel=3, output_channel=64, stride=1, use_bias=True
     with tf.variable_scope(scope):
         if use_bias:
             return slim.conv2d_transpose(batch_input, output_channel, [kernel, kernel], stride, 'SAME', data_format='NHWC',
-                            activation_fn=None, weights_initializer=tf.contrib.layers.xavier_initializer())
+                            activation_fn=None, weights_initializer=tf.glorot_uniform_initializer())
         else:
             return slim.conv2d_transpose(batch_input, output_channel, [kernel, kernel], stride, 'SAME', data_format='NHWC',
-                            activation_fn=None, weights_initializer=tf.contrib.layers.xavier_initializer(),
+                            activation_fn=None, weights_initializer=tf.glorot_uniform_initializer(),
                             biases_initializer=None)
 
 # Define the convolution building block
@@ -51,10 +51,10 @@ def conv2(batch_input, kernel=3, output_channel=64, stride=1, use_bias=True, sco
     with tf.variable_scope(scope):
         if use_bias:
             return slim.conv2d(batch_input, output_channel, [kernel, kernel], stride, 'SAME', data_format='NHWC',
-                            activation_fn=None, weights_initializer=tf.contrib.layers.xavier_initializer())
+                            activation_fn=None, weights_initializer=tf.glorot_uniform_initializer())
         else:
             return slim.conv2d(batch_input, output_channel, [kernel, kernel], stride, 'SAME', data_format='NHWC',
-                            activation_fn=None, weights_initializer=tf.contrib.layers.xavier_initializer(),
+                            activation_fn=None, weights_initializer=tf.glorot_uniform_initializer(),
                             biases_initializer=None)
 
 
@@ -64,10 +64,10 @@ def conv2_NCHW(batch_input, kernel=3, output_channel=64, stride=1, use_bias=True
     with tf.variable_scope(scope):
         if use_bias:
             return slim.conv2d(batch_input, output_channel, [kernel, kernel], stride, 'SAME', data_format='NCWH',
-                               activation_fn=None, weights_initializer=tf.contrib.layers.xavier_initializer())
+                               activation_fn=None, weights_initializer=tf.glorot_uniform_initializer())
         else:
             return slim.conv2d(batch_input, output_channel, [kernel, kernel], stride, 'SAME', data_format='NCWH',
-                               activation_fn=None, weights_initializer=tf.contrib.layers.xavier_initializer(),
+                               activation_fn=None, weights_initializer=tf.glorot_uniform_initializer(),
                                biases_initializer=None)
 
 
@@ -97,7 +97,7 @@ def maxpool(inputs, scope='maxpool'):
 # Our dense layer
 def denselayer(inputs, output_size):
     # Rachel todo, put it to Model variable_scope
-    denseLayer = tf.layers.Dense(output_size, activation=None, kernel_initializer=tf.contrib.layers.xavier_initializer())
+    denseLayer = tf.layers.Dense(output_size, activation=None, kernel_initializer=tf.glorot_uniform_initializer())
     output = denseLayer.apply(inputs)
     tf.add_to_collection( name=tf.GraphKeys.MODEL_VARIABLES, value=denseLayer.kernel )
     #output = tf.layers.dense(inputs, output_size, activation=None, kernel_initializer=tf.contrib.layers.xavier_initializer())
