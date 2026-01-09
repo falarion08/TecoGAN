@@ -7,7 +7,7 @@ import os, math, time, collections, numpy as np
 3 = INFO, WARNING, and ERROR messages are not printed
 Disable Logs for now '''
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 from tensorflow.python.util import deprecation
 tf.disable_v2_behavior()
 
@@ -18,7 +18,7 @@ import random as rn
 os.environ['PYTHONHASHSEED'] = '0'
 np.random.seed(42)
 rn.seed(12345)
-tf.random.set_seed(1234)
+tf.set_random_seed(1234)
 
 
 import tensorflow.contrib.slim as slim
